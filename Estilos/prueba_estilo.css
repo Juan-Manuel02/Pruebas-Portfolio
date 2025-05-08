@@ -1,0 +1,259 @@
+/* Reset básico para que todo empiece limpio */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo general de toda la web + color base de texto */
+body {
+  background-color: #121619; /* Azul petróleo oscuro */
+  color: #e1ded9;            /* Gris claro cálido */
+  font-family: 'Courier New', monospace; /* Tipografía con un toque técnico/creativo */
+  line-height: 1.9;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background animado inspirado en las imágenes de referencia */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Ondas fluidas inspiradas en las imágenes */
+.wave {
+  position: absolute;
+  opacity: 0.15;
+  border-radius: 100%;
+}
+
+.wave-1 {
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at center, transparent 30%, #b9472b 70%);
+  top: -50%;
+  left: -10%;
+  animation: wave-move 25s infinite alternate;
+}
+
+.wave-2 {
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at center, transparent 30%, #346beb 70%);
+  bottom: -80%;
+  right: -25%;
+  animation: wave-move 20s infinite alternate-reverse;
+}
+
+.wave-3 {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 30%, #69b929 70%);
+  top: 40%;
+  left: -25%;
+  animation: wave-move 28s infinite alternate;
+}
+
+/* Formas orgánicas tipo "blob" */
+.blob {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.12;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background-color: #e28413;
+  top: 15%;
+  right: 5%;
+  border-radius: 60% 40% 70% 30% / 40% 50% 60% 50%;
+  animation: blob-morph 15s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background-color: #69b929;
+  bottom: 10%;
+  left: 10%;
+  border-radius: 50% 60% 30% 70% / 60% 30% 70% 40%;
+  animation: blob-morph 12s ease-in-out infinite alternate-reverse;
+}
+
+/* Animaciones para los elementos de fondo */
+@keyframes wave-move {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes blob-morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+/* HEADER - Navegación fija y simple */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+}
+
+/* Logo en el header */
+.logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 100%;
+  width: auto;
+  filter: brightness(0) saturate(100%) invert(93%) sepia(8%) saturate(116%) hue-rotate(356deg) brightness(92%) contrast(87%);
+}
+
+/* LISTA DE NAVEGACIÓN - sin bullets y con espacio */
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* ENLACES de navegación */
+nav a {
+  color: #e1ded9;          /* Mismo tono que el texto principal */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* EFECTO HOVER en navegación */
+nav a:hover {
+  color: #b9472b;          /* Rojo terroso quemado */
+}
+
+/* HERO SECTION - ocupa pantalla completa, centra contenido */
+.hero {
+  height: calc(100vh - 80px); /* Altura completa menos el header */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Texto dentro del hero */
+.typing-container p {
+  font-size: 1.5rem;
+  max-width: 800px;
+}
+
+.typing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px; /* limita el ancho del contenedor */
+  margin: 0 auto; /* centra el contenedor */
+  flex-wrap: wrap; /* permite que el texto se ajuste en varias líneas */
+  position: relative;
+  z-index: 2;
+}
+
+/* Aumentar el tamaño del texto */
+#typing {
+  font-size: 1.8rem; /* aumenta el tamaño del texto */
+  line-height: 1.4; /* mejora el espacio entre líneas */
+  text-align: center; /* centra el texto */
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.cursor { /* cambios: ajustar cursor para que coincida con el nuevo tamaño */
+  font-size: 1.8rem; /* ahora tiene el mismo tamaño que el texto */
+  margin-left: 5px;
+  color: #b9472b;
+  animation: blink 1s infinite;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* BOTÓN de llamada a la acción */
+.cta a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #b9472b; /* Rojo terroso */
+  color: #e1ded9;            /* Texto en fondo oscuro, contraste inverso */
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(185, 71, 43, 0.3);
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem; /* Más espacio entre el texto y el botón */
+}
+
+/* HOVER en el botón */
+.cta a:hover {
+  background-color: #872d29; /* Vino profundo, elegante, más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(185, 71, 43, 0.4);
+}
+
+/* Efecto de pulsación */
+.cta a:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(185, 71, 43, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #typing {
+    font-size: 1.4rem;
+  }
+  
+  .cursor {
+    font-size: 1.4rem;
+  }
+  
+  .blob-1, .blob-2 {
+    opacity: 0.08;
+  }
+}
